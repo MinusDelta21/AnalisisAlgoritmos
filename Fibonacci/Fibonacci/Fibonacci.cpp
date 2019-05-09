@@ -19,7 +19,10 @@
 #include <iostream>
 #include <chrono>
 #include <string>
+#include <fstream>
+#include <vector>
 
+using std::vector;
 using std::cin;
 using std::cout;
 using std::string;
@@ -80,32 +83,63 @@ PrintResult(int result, double duration)
   std::cout << text << std::endl;
 }
 
+/************************************************************************/
+/* Write .csv                                                           */
+/************************************************************************/
+void
+writeCSV(vector<int> position, vector<double> time, string fileName) {
+  std::ofstream file;
+  file.open(fileName);
+  file.clear();
+  for (int i = 0; i < position.size(); i++) {
+    file << position[i] << ", ";
+    file << time[i] << "\n";
+  }
+  
+  file.close();
+}
 int main()
 {
   int number = 0;
-
+  vector<int> numbers;
+  vector<double> times;
   std::cout << "Enter the position in sequence: ";
   std::cin >> number;
 
   //get the start time
-  auto startTime = high_resolution_clock::now();
   //Call Non recursive fibonacci function.
-  int result = Fibonacci(number);
-  //Get end time.
-  auto endTime = high_resolution_clock::now();
-  //Calculate elapsed time.
-  duration<double> duration = endTime - startTime;
+  int result;
+  double accumulatedDuration = 0;
+  for (int i = 0; i < number; i++) {
+    auto startTime = high_resolution_clock::now();
+    result = Fibonacci(i);
+    //Get end time.
+    auto endTime = high_resolution_clock::now();
+    numbers.push_back(result);
+    //Calculate elapsed time.
+    duration<double, std::micro> duration = endTime - startTime;
+    accumulatedDuration += duration.count();
+    times.push_back(accumulatedDuration);
+    PrintResult(result, accumulatedDuration);
+  }
+  writeCSV(numbers, times, "Fibonacci.csv");
 
-  PrintResult(result, duration.count());
-
-  startTime = high_resolution_clock::now();
-  //Call Non recursive fibonacci function.
-  result = RecursiveFibonacci(number);
-  //Get end time.
-  endTime = high_resolution_clock::now();
-  //Calculate elapsed time.
-  duration = endTime - startTime;
-  PrintResult(result, duration.count());
+  accumulatedDuration = 0;
+  numbers.clear();
+  times.clear();
+  for (int i = 0; i < number; i++) {
+    auto startTime = high_resolution_clock::now();
+    result = RecursiveFibonacci(i);
+    //Get end time.
+    auto endTime = high_resolution_clock::now();
+    numbers.push_back(result);
+    //Calculate elapsed time.
+    duration<double, std::micro> duration = endTime - startTime;
+    accumulatedDuration += duration.count();
+    times.push_back(accumulatedDuration);
+    PrintResult(result, accumulatedDuration);
+  }
+  writeCSV(numbers, times, "RecursiveFibonacci.csv");
 
   return 0;
 }
