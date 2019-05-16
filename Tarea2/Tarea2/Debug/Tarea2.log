@@ -1,2 +1,3 @@
 ﻿  Tarea2.cpp
+d:\documents\analisisalgoritmos\tarea2\tarea2\tarea2.cpp(51): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Tarea2.vcxproj -> D:\Documents\AnalisisAlgoritmos\Tarea2\Debug\Tarea2.exe
