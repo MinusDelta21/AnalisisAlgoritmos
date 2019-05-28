@@ -28,6 +28,15 @@ using::std::chrono::duration;
 using std::vector;
 
 /************************************************************************/
+/* Sorted Enum                                                          */
+/************************************************************************/
+enum SORT_METHOD {
+  ASCENDING,
+  DESCENDING,
+  RANDOM
+};
+
+/************************************************************************/
 /* Vector Generator functions                                           */
 /************************************************************************/
 vector<int> ascendingVector(int size) {
@@ -264,6 +273,10 @@ void mergeSortCall(vector<int>& vector) {
 /* Sorted array functions                                               */
 /************************************************************************/
 int binarySearch(vector<int>& vector,int left, int right, int key) {  
+  if (vector.size() <2)
+  {
+    return -900;
+  }
   if (right < left) {
     return -999;
   }
@@ -282,7 +295,40 @@ int binarySearch(vector<int>& vector,int left, int right, int key) {
     return mid;
   }
 }
-
+int binarySearchCall(vector<int>& vector, int key) {
+  int left = 0;
+  int right = vector.size() - 1;
+  return binarySearch(vector, left, right, key);
+}
+/************************************************************************/
+/* Unsorted array functions                                             */
+/************************************************************************/
+int linearSearch(vector<int>& vector, int key) {
+  if (vector.size() < 2) {
+    return -900;
+  }
+  int size = vector.size();
+  for (int i = 0; i<size; i++)
+  {
+    if (vector[i] == key) {
+      return i;
+    }
+  }
+}
+vector<int> linearSearchAll(vector<int>& inputVector, int key) {
+  if (inputVector.size() < 2) {
+    return ascendingVector(1);
+  }
+  int size = inputVector.size();
+  vector<int> tempVector;
+  for (int i = 0; i < size; i++)
+  {
+    if (inputVector[i] == key) {
+      tempVector.push_back(i);
+    }
+  }
+  return tempVector;
+}
 
 /************************************************************************/
 /* Benchmarking functions                                               */
@@ -386,12 +432,16 @@ void benchmark(int testSize, int iterations, std::function<void(vector<int>&)> f
 /************************************************************************/
 int main()
 {
-  benchmark(500, 10, bubbleSort, "BubbleSort");
-  benchmark(500, 10, quickSortCall, "QuickSort");
-  benchmark(500, 10, heapSort, "HeapSort");
-  benchmark(500, 10, insertionSort, "InsertionSort");
-  benchmark(500, 10, mergeSortCall, "MergeSort");
+  vector<int> testVector = randomVector(500,0,9);
+  printVector(testVector);
+  printIndex(binarySearchCall(testVector, 5));
+  printIndex(linearSearch(testVector, 5));
+  printVector(linearSearchAll(testVector, 5));
 
-  cout << "Al fin termino" << endl;
+  //benchmark(500, 10, bubbleSort, "BubbleSort");
+  //benchmark(500, 10, quickSortCall, "QuickSort");
+  //benchmark(500, 10, heapSort, "HeapSort");
+  //benchmark(500, 10, insertionSort, "InsertionSort");
+  //benchmark(500, 10, mergeSortCall, "MergeSort");
   return 0;
 }
