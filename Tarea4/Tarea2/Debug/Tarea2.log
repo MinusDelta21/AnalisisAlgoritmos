@@ -1,0 +1,30 @@
+﻿  Tarea2.cpp
+d:\documents\analisisalgoritmos\tarea4\tarea2\tarea2.cpp(45): warning C4244: 'argument': conversion from 'int' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+d:\documents\analisisalgoritmos\tarea4\tarea2\tarea2.cpp(60): warning C4244: 'argument': conversion from 'int' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+d:\documents\analisisalgoritmos\tarea4\tarea2\tarea2.cpp(67): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+d:\documents\analisisalgoritmos\tarea4\tarea2\tarea2.cpp(69): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+d:\documents\analisisalgoritmos\tarea4\tarea2\tarea2.cpp(71): warning C4244: 'argument': conversion from 'float' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+d:\documents\analisisalgoritmos\tarea4\tarea2\tarea2.cpp(77): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+d:\documents\analisisalgoritmos\tarea4\tarea2\tarea2.cpp(304): warning C4018: '<': signed/unsigned mismatch
+d:\documents\analisisalgoritmos\tarea4\tarea2\tarea2.cpp(307): warning C4018: '<': signed/unsigned mismatch
+d:\documents\analisisalgoritmos\tarea4\tarea2\tarea2.cpp(316): warning C4018: '<': signed/unsigned mismatch
+d:\documents\analisisalgoritmos\tarea4\tarea2\tarea2.cpp(378): warning C4244: 'initializing': conversion from '_Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+d:\documents\analisisalgoritmos\tarea4\tarea2\tarea2.cpp(387): warning C4018: '<': signed/unsigned mismatch
+d:\documents\analisisalgoritmos\tarea4\tarea2\tarea2.cpp(437): warning C4715: 'linearSearch': not all control paths return a value
+  Tarea2.vcxproj -> D:\Documents\AnalisisAlgoritmos\Tarea4\Debug\Tarea2.exe
