@@ -26,5 +26,8 @@
     <ClCompile Include="Tarea2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Parcial1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
